@@ -5,6 +5,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
+from sklearn.metrics import roc_auc_score
 
 
 def classifier(model, x, y, test_data, ture_data):
@@ -13,6 +14,7 @@ def classifier(model, x, y, test_data, ture_data):
     scores = cross_val_score(model, x, y, cv=5)
     print("Accuracy score: {}".format(accuracy_score(ture_data, prediction)))
     print('Cross validation accuracy: %0.2f (+/- %0.2f)' % (scores.mean(), scores.std() * 2))
+    print("ROC AUC score: {}".format(roc_auc_score(ture_data, prediction)))
 
 
 x = []
